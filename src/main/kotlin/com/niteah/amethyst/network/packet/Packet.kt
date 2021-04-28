@@ -1,4 +1,4 @@
-package com.niteah.sapphire.network.packet
+package com.niteah.amethyst.network.packet
 
 import com.google.gson.JsonObject
 

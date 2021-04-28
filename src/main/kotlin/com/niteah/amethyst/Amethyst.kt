@@ -2,12 +2,11 @@ package com.niteah.sapphire
 
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
-import com.niteah.sapphire.network.SapphirePubSub
-import com.niteah.sapphire.network.packet.Packet
-import com.niteah.sapphire.network.packet.PacketListener
+import com.niteah.amethyst.network.packet.Packet
+import com.niteah.amethyst.network.packet.PacketListener
 import redis.clients.jedis.JedisPool
 
-class Sapphire (val channel: String, host: String = "127.0.0.1", port: Int = 6379, pass: String = "") {
+class Amethyst (val channel: String, host: String = "127.0.0.1", port: Int = 6379, pass: String = "") {
 
     var parser: JsonParser = JsonParser()
 
@@ -38,8 +37,8 @@ class Sapphire (val channel: String, host: String = "127.0.0.1", port: Int = 637
     fun getPacket(obj: JsonObject): Packet? {
         var packet = packets[obj["id"].asString]?: return null
         obj.remove("id")
-        packet.deserialize(obj)
 
+        packet.deserialize(obj)
         return packet
     }
 
