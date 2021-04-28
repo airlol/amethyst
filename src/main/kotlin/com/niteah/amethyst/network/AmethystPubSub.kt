@@ -1,6 +1,5 @@
 package com.niteah.amethyst.network
 
-import com.niteah.amethyst.Amethyst
 import com.niteah.amethyst.network.packet.PacketHandler
 import com.niteah.sapphire.Amethyst
 import redis.clients.jedis.JedisPubSub

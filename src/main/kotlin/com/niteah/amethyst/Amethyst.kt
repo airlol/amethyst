@@ -2,6 +2,7 @@ package com.niteah.sapphire
 
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
+import com.niteah.amethyst.network.AmethystPubSub
 import com.niteah.amethyst.network.packet.Packet
 import com.niteah.amethyst.network.packet.PacketListener
 import redis.clients.jedis.JedisPool
@@ -10,8 +11,8 @@ class Amethyst (val channel: String, host: String = "127.0.0.1", port: Int = 637
 
     var parser: JsonParser = JsonParser()
 
-    var pubPool: JedisPool = JedisPool(host, port)
-    var subPool: JedisPool = JedisPool(host, port)
+    private var pubPool: JedisPool = JedisPool(host, port)
+    private var subPool: JedisPool = JedisPool(host, port)
 
     var listeners = mutableListOf<PacketListener>()
     private var packets = mutableMapOf<String, Packet>()
@@ -21,7 +22,7 @@ class Amethyst (val channel: String, host: String = "127.0.0.1", port: Int = 637
         if (pass != "") subPool.resource.auth(pass)
 
         Thread {
-            subPool.resource.subscribe(SapphirePubSub(this), channel)
+            subPool.resource.subscribe(AmethystPubSub(this), channel)
         }.start()
     }
 
