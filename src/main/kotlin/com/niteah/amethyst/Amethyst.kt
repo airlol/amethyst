@@ -1,4 +1,4 @@
-package com.niteah.sapphire
+package com.niteah.amethyst
 
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser

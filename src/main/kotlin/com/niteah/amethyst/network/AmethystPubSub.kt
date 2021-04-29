@@ -1,10 +1,10 @@
 package com.niteah.amethyst.network
 
 import com.niteah.amethyst.network.packet.PacketHandler
-import com.niteah.sapphire.Amethyst
+import com.niteah.amethyst.Amethyst
 import redis.clients.jedis.JedisPubSub
 
-class AmethystPubSub (val amethyst: Amethyst): JedisPubSub() {
+class AmethystPubSub (private val amethyst: Amethyst): JedisPubSub() {
 
     override fun onMessage(channel: String, message: String) {
 
