@@ -1,2 +1,2 @@
 # amethyst
-easy redis pub &amp; sub system
+easy redis pub &amp; sub system.
